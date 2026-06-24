@@ -15,12 +15,23 @@ def remove_nulls(data):
     clean = [row for row in data if row['customer'] and row['amount']]
     print(f"After removing nulls: {len(clean)} rows")
     return clean
+def remove_duplicates(data):
+    seen = set()
+    clean = []
+    for row in data:
+        key = row['order_id']
+        if key not in seen:
+            seen.add(key)
+            clean.append(row)
+    print(f"After removing duplicates: {len(clean)} rows")
+    return clean
 
 def main():
     data = load_data('data/sales_data.csv')
     print(f"Loaded {len(data)} rows")
 
-    data = remove_nulls(data)        # ← new line
+    data = remove_nulls(data)     
+    data = remove_duplicates(data)   # ← new line
 
     save_data(data, 'data/clean_sales.csv')
     print("Saved to data/clean_sales.csv")
