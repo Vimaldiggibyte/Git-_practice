@@ -29,6 +29,11 @@ def remove_negative_amounts(data):
     clean = [row for row in data if float(row['amount']) > 0]
     print(f"After removing negatives: {len(clean)} rows")
     return clean
+def fix_date_format(data):
+    for row in data:
+        row['date'] = row['date'].replace('/', '-')
+    print("Fixed date formats")
+    return data
 
 def main():
     data = load_data('data/sales_data.csv')
@@ -37,6 +42,7 @@ def main():
     data = remove_nulls(data)     
     data = remove_duplicates(data)  
     data = remove_negative_amounts(data)
+    data = fix_date_format(data)
 
     save_data(data, 'data/clean_sales.csv')
     print("Saved to data/clean_sales.csv")
