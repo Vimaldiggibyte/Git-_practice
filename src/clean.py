@@ -25,13 +25,18 @@ def remove_duplicates(data):
             clean.append(row)
     print(f"After removing duplicates: {len(clean)} rows")
     return clean
+def remove_negative_amounts(data):
+    clean = [row for row in data if float(row['amount']) > 0]
+    print(f"After removing negatives: {len(clean)} rows")
+    return clean
 
 def main():
     data = load_data('data/sales_data.csv')
     print(f"Loaded {len(data)} rows")
 
     data = remove_nulls(data)     
-    data = remove_duplicates(data)   # ← new line
+    data = remove_duplicates(data)  
+    data = remove_negative_amounts(data)
 
     save_data(data, 'data/clean_sales.csv')
     print("Saved to data/clean_sales.csv")
