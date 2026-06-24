@@ -1,0 +1,8 @@
+order_id,customer,amount,date,status
+1,Alice,250.00,2024-01-15,completed
+2,Bob,,2024-01-16,completed
+3,Alice,180.50,2024/01/17,pending
+4,,320.00,2024-01-18,completed
+5,Charlie,180.50,2024-01-17,pending
+6,David,-50.00,2024-01-19,completed
+2,Bob,95.00,2024-01-16,completed
